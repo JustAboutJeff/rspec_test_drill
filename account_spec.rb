@@ -28,17 +28,15 @@ describe Account do
     end
 
     it "should return all the transactions" do
-      other_account = Account.new("4523356723",12)
-      other_account.deposit!(20)
-      expect(other_account.transactions).to eq [12,20]
+      my_account.stub(:transactions => [100,12,20])
+      expect(my_account.transactions).to eq [100,12,20]
     end
   end
 
   context "#balance" do
     it "should return correct balance sum" do
-      other_account = Account.new("4523356723",12)
-      other_account.deposit!(20)
-      expect(other_account.balance).to eq 32
+      my_account.stub(:transactions => [20,32])
+      expect(my_account.balance).to eq 52
     end
   end
 
