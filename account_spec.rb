@@ -6,11 +6,11 @@ describe Account do
 
   context "#initialize" do
     it "should be an instance of Account" do
-      my_account.should be_an_instance_of Account
+      expect(my_account).to be_an_instance_of Account
     end
 
     it "should set account number" do
-      my_account.acct_number.should_not be_nil
+      expect(my_account.acct_number).to_not be_nil
     end
 
     it "should accept one argument" do
@@ -24,13 +24,13 @@ describe Account do
 
   context "#transactions" do
     it "should default to zero" do
-      Account.new("4523456723").transactions.should eq [0]
+      expect(Account.new("4523456723").transactions).to eq [0]
     end
 
     it "should return all the transactions" do
       other_account = Account.new("4523356723",12)
       other_account.deposit!(20)
-      other_account.transactions.should eq [12,20]
+      expect(other_account.transactions).to eq [12,20]
     end
   end
 
@@ -38,13 +38,13 @@ describe Account do
     it "should return correct balance sum" do
       other_account = Account.new("4523356723",12)
       other_account.deposit!(20)
-      other_account.balance.should eq 32
+      expect(other_account.balance).to eq 32
     end
   end
 
   context "#account_number" do
     it "should hide the account number" do
-      my_account.acct_number.should_not eq "1023456789" 
+      expect(my_account.acct_number).to_not eq "1023456789" 
     end
 
   end
